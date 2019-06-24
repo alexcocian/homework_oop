@@ -6,20 +6,20 @@ public class Main {
 
         MessageThread thread = new MessageThread();
         InputFromFile convoReader = new InputFromFile();
-        String lineOfText = convoReader.readFromFile();
-        while (lineOfText != null) {
-            String[] line = lineOfText.split(":");
-            String user = line[0];
-            if (line.length > 1){
-                Message newMessage = new Message(user, line[1]);
-                thread.addMessage(newMessage);
-                thread.setSeenMessages(user);
+        String lineFromFile = convoReader.readFromFile();
+        while (lineFromFile != null) {
+            String[] lineElements = lineFromFile.split(":");
+            String currentUser = lineElements[0];
+            if (lineElements.length > 1){
+                Message currentUserMessage = new Message(currentUser, lineElements[1]);
+                thread.addMessage(currentUserMessage);
+                thread.setSeenMessages(currentUser);
             }
             else {
-                thread.setSeenMessages(user);
-                thread.print(user);
+                thread.setSeenMessages(currentUser);
+                thread.print(currentUser);
             }
-            lineOfText = convoReader.readFromFile();
+            lineFromFile = convoReader.readFromFile();
         }
     }
 }

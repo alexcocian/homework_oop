@@ -13,9 +13,8 @@ class StudentManager {
     }
 
     Student ensureStudentExists(String studentName) throws Exception {
-        if (studentListContains(studentName)) {
+        if (studentListContains(studentName))
             return getStudent(studentName);
-        }
         Student newStudent = new Student(studentName);
         studentList.add(newStudent);
         return newStudent;

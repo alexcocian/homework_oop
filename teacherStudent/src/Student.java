@@ -15,35 +15,38 @@ class Student extends Person {
 
     void learn(Skill newSkill) throws Exception {
         if (skillListContains(newSkill)) {
-            getSkill(newSkill.getSkillName()).increaseSkillLevel();
-        } else {
+            getSkill(newSkill.name).increaseSkillLevel();
+        }
+        else {
             skillList.add(newSkill);
         }
     }
 
-    private Skill getSkill(String skillToSearch) throws Exception {
-        for (Skill skill : skillList) {
-            if (skill.getSkillName().equals(skillToSearch)) {
-                return skill;
-            }
-        }
-        throw new Exception();
-    }
-
     void printSkillList() {
-        if (skillList == null)
+        if (skillList.size() == 0)
             System.out.println("Student " + this.name + " has no skills. Sad");
         for (Skill skill : skillList) {
-            System.out.println(skill.getSkillName() + ": level " + skill.getSkillLevel());
+            System.out.println("Student " + this.name + " knows " + skill.name + " -taught by- " +
+                    skill.getHolder().name + ": level " + skill.getSkillLevel());
         }
     }
 
     private boolean skillListContains(Skill newSkill) {
         for (Skill skill :
                 skillList) {
-            if (skill.skillName.equals(newSkill.getSkillName()))
+            if (skill.name.equals(newSkill.name) &&
+                    skill.getHolder().name.equals(newSkill.getHolder().name))
                 return true;
         }
         return false;
+    }
+
+    private Skill getSkill(String skillToSearch) throws Exception {
+        for (Skill skill : skillList) {
+            if (skill.name.equals(skillToSearch)) {
+                return skill;
+            }
+        }
+        throw new Exception();
     }
 }

@@ -12,5 +12,4 @@ class Teacher extends Person {
         newSkill.setHolder(this);
         student.learn(newSkill);
     }
-
 }

@@ -3,13 +3,17 @@
  */
 class Skill {
 
-    String skillName;
-    private Teacher holder;
+    String name;
     private int skillLevel;
+    private Teacher holder;
 
     Skill(String name){
-        this.skillName = name;
+        this.name = name;
         this.skillLevel = 1;
+    }
+
+    Teacher getHolder() {
+        return holder;
     }
 
     void setHolder(Teacher holder) {
@@ -24,7 +28,7 @@ class Skill {
         this.skillLevel += 1 ;
     }
 
-    String getSkillName() {
-        return skillName;
+    String name() {
+        return name;
     }
 }

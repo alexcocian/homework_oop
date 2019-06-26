@@ -12,6 +12,14 @@ class StudentManager {
         studentList.add(newStudent);
     }
 
+    static Student manageNewStudent(String studentName) throws Exception {
+        if(StudentManager.contains(studentName)){
+            return StudentManager.getStudent(studentName);
+        }
+        else
+            return new Student(studentName);
+    }
+
     static boolean contains(String studentName){
         for (Student student: StudentManager.studentList) {
             if(student.name.equals(studentName))

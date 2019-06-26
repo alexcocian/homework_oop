@@ -21,7 +21,7 @@ class Skill {
     }
 
     void increaseSkillLevel() {
-        this.skillLevel =+ 1 ;
+        this.skillLevel += 1 ;
     }
 
     String getSkillName() {

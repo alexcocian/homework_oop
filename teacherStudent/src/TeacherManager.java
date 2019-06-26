@@ -6,13 +6,21 @@ import java.util.List;
  */
 class TeacherManager {
 
-    private static List<Teacher> teachersList = new ArrayList<>();
+    private List<Teacher> teachersList = new ArrayList<>();
 
-    static void addTeacher (Teacher newTeacher){
+    void addTeacher (Teacher newTeacher){
         teachersList.add(newTeacher);
     }
 
-    static boolean contains(String teacherName){
+    private Teacher manageNewTeacher(String teacherName) throws Exception {
+        if(TeacherManager.contains(teacherName)){
+            return TeacherManager.getTeacher(teacherName);
+        }
+        else
+            return new Teacher(teacherName);
+    }
+
+    boolean contains(String teacherName){
         for (Teacher teacher: teachersList) {
             if(teacher.name.equals(teacherName))
                 return  true;
@@ -20,7 +28,7 @@ class TeacherManager {
         return false;
     }
 
-    static Teacher getTeacher (String teacherName) throws Exception {
+    private Teacher getTeacher(String teacherName) throws Exception {
         for (Teacher teacher:
              teachersList) {
             if(teacher.name.equals(teacherName))

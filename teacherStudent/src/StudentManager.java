@@ -6,32 +6,32 @@ import java.util.List;
  */
 class StudentManager {
 
-    private static List<Student> studentList = new ArrayList<>();
+    private List<Student> studentList;
 
-    static void addStudent (Student newStudent){
-        studentList.add(newStudent);
+    StudentManager() {
+        this.studentList = new ArrayList<>();
     }
 
-    static Student manageNewStudent(String studentName) throws Exception {
-        if(StudentManager.contains(studentName)){
-            return StudentManager.getStudent(studentName);
+    Student ensureStudentExists(String studentName) throws Exception {
+        if (studentListContains(studentName)) {
+            return getStudent(studentName);
         }
-        else
-            return new Student(studentName);
+        Student newStudent = new Student(studentName);
+        studentList.add(newStudent);
+        return newStudent;
     }
 
-    static boolean contains(String studentName){
-        for (Student student: StudentManager.studentList) {
-            if(student.name.equals(studentName))
-                return  true;
+    private boolean studentListContains(String studentName) {
+        for (Student student : studentList) {
+            if (student.name.equals(studentName))
+                return true;
         }
         return false;
     }
 
-    static Student getStudent (String studentName) throws Exception {
-        for (Student student:
-                studentList) {
-            if(student.name.equals(studentName))
+    private Student getStudent(String studentName) throws Exception {
+        for (Student student : studentList) {
+            if (student.name.equals(studentName))
                 return student;
         }
         throw new Exception();

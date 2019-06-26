@@ -17,13 +17,4 @@ class InputFromFile {
     String readFromFile() throws IOException {
         return fileInstructions.readLine();
     }
-
-
-
-
-
-
-//    private Skill manageNewSkill(String skillName){
-//        if()
-//    }
 }

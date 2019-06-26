@@ -8,39 +8,40 @@ class Student extends Person {
 
     private List<Skill> skillList;
 
-    Student (String studentName){
+    Student(String studentName) {
         this.name = studentName;
-        StudentManager.addStudent(this);
         skillList = new ArrayList<>();
     }
 
-    String getName(){
-        return this.name;
+    void learn(Skill newSkill) throws Exception {
+        if (skillListContains(newSkill)) {
+            getSkill(newSkill.getSkillName()).increaseSkillLevel();
+        } else {
+            skillList.add(newSkill);
+        }
     }
 
-    List<Skill> getSkillList() {
-        return skillList;
-    }
-
-    Skill getSkill(String skillToSearch) throws Exception {
+    private Skill getSkill(String skillToSearch) throws Exception {
         for (Skill skill : skillList) {
-            if (skill.getSkillName().equals(skillToSearch)){
+            if (skill.getSkillName().equals(skillToSearch)) {
                 return skill;
             }
         }
         throw new Exception();
     }
 
-    void printSkillList(){
-        for (Skill skill: skillList) {
-            System.out.println(skill.getSkillName() + skill.getSkillLevel());
+    void printSkillList() {
+        if (skillList == null)
+            System.out.println("Student " + this.name + " has no skills. Sad");
+        for (Skill skill : skillList) {
+            System.out.println(skill.getSkillName() + ": level " + skill.getSkillLevel());
         }
     }
 
-    boolean skillListContains(String skillName){
+    private boolean skillListContains(Skill newSkill) {
         for (Skill skill :
-            skillList) {
-            if(skill.skillName.equals(skillName))
+                skillList) {
+            if (skill.skillName.equals(newSkill.getSkillName()))
                 return true;
         }
         return false;

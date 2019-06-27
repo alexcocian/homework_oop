@@ -8,6 +8,7 @@ class Student extends Person {
 
     private List<Skill> skillList;
 
+    //TODO: constructor inheritance here
     Student(String studentName) {
         this.name = studentName;
         skillList = new ArrayList<>();

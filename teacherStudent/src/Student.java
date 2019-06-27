@@ -13,6 +13,8 @@ class Student extends Person {
         skillList = new ArrayList<>();
     }
 
+    //TOOD: aici ceva nu-i kosher. cineva creaza un skill si ti-l da tie, da tu te prinzi ca il aveai deja asa ca numa ii faci increment. pare ca universul asta nu e in perfecta armonie, ca nu s-ar fi creat ceva inutil daca era.
+    //hint: cine "owns" the skill? they should be producing/maintaining it, mi se pare mie. nu? tu cand primesti de afara primesti o bucata, un increment, o informatie. da skillul e al tau...
     void learn(Skill newSkill) throws Exception {
         if (skillListContains(newSkill)) {
             getSkill(newSkill.name).increaseSkillLevel();

@@ -12,7 +12,7 @@ class InstructionExecutor {
     }
 
     void executeLine(String[] instructions) throws Exception {
-
+//TODO: nu respecta requirementul din wunderlist
         if (instructions.length == 1) {
             Student student = studentRegister.ensureStudentExists(instructions[0]);
             student.printSkillList();
